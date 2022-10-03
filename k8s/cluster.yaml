@@ -232,7 +232,7 @@ spec:
   cloudLabels:
     testground.node.role.infra: "true"
   image: 909427826938/testground_2020-10-30
-  machineType: c5.2xlarge
+  machineType: t2.micro
   maxSize: 2
   minSize: 2
   nodeLabels:
