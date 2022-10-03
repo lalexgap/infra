@@ -52,9 +52,12 @@ fi
 # The remainder of this script creates the cluster using the generated template
 
 kops create -f $CLUSTER_SPEC
-kops create secret --name $CLUSTER_NAME sshpublickey admin -i $PUBKEY
-kops update cluster $CLUSTER_NAME --yes
+# Upgrade to a version that supports docker
+kops upgrade cluster --name $CLUSTER_NAME  --yes --kubernetes-version 1.23
 
+
+kops create secret --name $CLUSTER_NAME sshpublickey admin -i $PUBKEY
+kops update cluster --name $CLUSTER_NAME  --yes
 # Wait for worker nodes and master to be ready
 kops validate cluster --wait 20m
 
