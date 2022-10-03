@@ -38,13 +38,13 @@ spec:
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
-    - instanceGroup: master-${ZONE}
+    - instanceGroup: master-${ZONE_A}
       name: a
     memoryRequest: 100Mi
     name: main
   - cpuRequest: 100m
     etcdMembers:
-    - instanceGroup: master-${ZONE}
+    - instanceGroup: master-${ZONE_A}
       name: a
     memoryRequest: 100Mi
     name: events
@@ -120,7 +120,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: ${CLUSTER_NAME}
-  name: master-${ZONE}
+  name: master-${ZONE_A}
 spec:
   additionalUserData:
   - name: myscript.sh
